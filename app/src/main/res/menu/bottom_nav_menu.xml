@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item android:title="@string/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:id="@+id/home"/>
+    <item android:title="@string/study_set"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:id="@+id/study_set"/>
+    <item android:title="@string/calendar"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:id="@+id/calendar"/>
+    <item android:title="@string/pomodoro_timer"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:id="@+id/pomodoro_timer"/>
+    <item android:title="@string/account"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:id="@+id/account"/>
+</menu>
