@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountFragment">
+    tools:context=".AccountFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -24,13 +25,14 @@
             android:id="@+id/name_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.408" />
+            app:layout_constraintVertical_bias="0.408"
+            tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -40,6 +42,7 @@
         android:layout_marginStart="158dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="159dp"
+        android:contentDescription="@string/hello"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,27 +64,22 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp">
 
-            <ImageView
-                android:id="@+id/email_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/email_imageviewfrag"
-                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/email_textview"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:padding="10dp"
+                app:drawableStartCompat="@drawable/email_imageviewfrag" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,20 +92,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/password_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/password_imageviewfrag"
-                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/password_textview"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:padding="10dp"
+                app:drawableStartCompat="@drawable/password_imageviewfrag"
+                android:layout_marginTop="150dp"
+                android:layout_marginStart="20dp"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -121,19 +116,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/number_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_local_phone_24"
-                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/number_textview"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:padding="10dp"
+                app:drawableStartCompat="@drawable/ic_baseline_local_phone_24"
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="20dp"/>
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/logout"
+                android:background="#F44336"
+                android:layout_marginTop="300dp"
+                android:layout_marginEnd="147dp"/>
+
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

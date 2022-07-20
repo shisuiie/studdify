@@ -6,13 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
     FirebaseAuth mAuth;
-    FirebaseUser mUser;
+
 
 
 
@@ -39,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         button2=findViewById(R.id.button2);
         progressDialog=new ProgressDialog(this);
         mAuth=FirebaseAuth.getInstance();
-        mUser=mAuth.getCurrentUser();
+
 
 
 
