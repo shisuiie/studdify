@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
+    Button btnGoogle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         progressDialog=new ProgressDialog(this);
         mAuth= FirebaseAuth.getInstance();
         mUser=mAuth.getCurrentUser();
+        btnGoogle=findViewById(R.id.button8);
+
 
 
         button2.setOnClickListener(v -> performAuth());
@@ -46,23 +53,32 @@ public class MainActivity extends AppCompatActivity {
 
 
         textView3.setOnClickListener(v -> startActivity(new Intent(MainActivity.this,RegisterActivity.class)));
+
+        btnGoogle.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GoogleAuthActivity.class);
+            startActivity(intent);
+        });
+
+
+
     }
 
     private void performAuth() {
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
 
-        if (email.matches(emailPattern))
+        if (!email.matches(emailPattern))
         {
             inputEmail.setError("Enter a Valid Email Address");
 
-        }if (password.isEmpty() || password.length()<6)
-        {
+        }if (password.length()<6) {
             inputPassword.setError("Enter Password longer than 6 characters");
 
-        }
-
-        {
+        } if (password.isEmpty()){
+            inputPassword.setError("Please enter password before continuing");
+        } if (email.isEmpty()){
+            inputEmail.setError("Please enter Email before continuing");
+        } else  {
             progressDialog.setMessage("Confirming Login...");
             progressDialog.setTitle("Please Wait");
             progressDialog.setCanceledOnTouchOutside(false);
