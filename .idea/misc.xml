@@ -3,18 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.4765" />
+        <entry key="app/src/main/res/drawable/header.xml" value="0.4765" />
+        <entry key="app/src/main/res/drawable/headertwo.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_timer_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_outline_content_paste_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/input_bg.xml" value="0.3955" />
+        <entry key="app/src/main/res/drawable/input_bg2.xml" value="0.519" />
         <entry key="app/src/main/res/layout/activity_event_edit.xml" value="0.4234375" />
+        <entry key="app/src/main/res/layout/activity_facebook_auth.xml" value="0.2296875" />
+        <entry key="app/src/main/res/layout/activity_google_auth.xml" value="0.4026268115942029" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4089417555373257" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.5111111111111111" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_week_view.xml" value="0.317481884057971" />
         <entry key="app/src/main/res/layout/calendar_cell.xml" value="0.4109375" />
         <entry key="app/src/main/res/layout/event_cell.xml" value="0.2916666666666667" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.2716417910447761" />
-        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5192708333333333" />
-        <entry key="app/src/main/res/layout/fragment_pomodoro.xml" value="0.5192708333333333" />
-        <entry key="app/src/main/res/layout/fragment_studyset.xml" value="0.5192708333333333" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14533622559652928" />
+        <entry key="app/src/main/res/layout/fragment_pomodoro.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_studyset.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_weekly_calendar.xml" value="0.403125" />
+        <entry key="app/src/main/res/layout/row_add_goal.xml" value="0.5" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.5192708333333333" />
       </map>
     </option>

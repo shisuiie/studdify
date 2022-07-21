@@ -1,11 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PomodoroFragment"
-    android:background="#FF9800">
+    android:background="#FFFFFF">
 
 
+    <EditText
+        android:id="@+id/edit_text_input"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_view_countdown"
+        android:layout_centerHorizontal="true"
+        android:autofillHints=""
+        android:background="@drawable/input_bg"
+        android:hint="@string/minutes"
+        android:inputType="number"
+        android:maxLength="4"
+        android:minHeight="48dp"
+        android:layout_marginBottom="30dp"
 
-</FrameLayout>
+        android:paddingStart="20dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="3dp" />
+
+    <Button
+        android:id="@+id/button_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/edit_text_input"
+        android:layout_toEndOf="@id/edit_text_input"
+        android:background="#FFAC91"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/jua"
+        android:text="@string/set" />
+
+
+    <ImageView
+        android:layout_width="419dp"
+        android:layout_height="151dp"
+        android:background="@drawable/headertwo"
+        android:contentDescription="@string/toddodo" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/edit_text_input"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="151dp"
+        android:text="@string/focus_timer"
+        android:fontFamily="@font/jua"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text_view_countdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/_00_00"
+        android:textColor="@color/black"
+        android:textSize="60sp" />
+
+    <Button
+        android:id="@+id/button_start_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_countdown"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#FFAC91"
+        android:text="@string/start" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_countdown"
+        android:layout_alignBottom="@+id/button_start_pause"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/button_start_pause"
+        android:background="#FBF194"
+        android:text="@string/reset"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+
+</RelativeLayout>

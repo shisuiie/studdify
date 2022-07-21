@@ -3,24 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalendarFragment"
+    tools:context=".WeeklyCalendarFragment"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:id="@+id/newView">
 
 
-    <Button
-        android:id="@+id/weeklyaction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:layout_gravity="center"
-        android:contentDescription="@string/todo99"
-        android:text="WEEKLY"
-        android:fontFamily="@font/alata"
-        android:textColor="#A57632"
-        android:textSize="30sp"
-        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck"
-        android:onClick="weeklyAction"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -163,7 +151,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/newevent"
@@ -182,6 +171,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"/>
+
 
 
 

@@ -7,6 +7,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthEmailException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.firestore.auth.FirebaseAuthCredentialsProvider;
 
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private static final String TAG = "RegisterActivity";
     TextView textView4;
     EditText inputEmail,inputPassword,inputPassword2;
     Button button2;
@@ -50,25 +60,41 @@ public class RegisterActivity extends AppCompatActivity {
         button2.setOnClickListener(v -> PerforAuth());
     }
 
+    //Performing Authentication for inputEmail, inputPassword, and inputConfirmpassword
+
     private void PerforAuth() {
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
         String confirmpassword = inputPassword2.getText().toString();
 
-        if (!email.matches(emailPattern))
+        //Error handling
 
+        if (TextUtils.isEmpty(email))
         {
-            inputEmail.setError("Enter Valid Email address");
+            Toast.makeText(RegisterActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+            inputEmail.setError("Email Address is required");
+            inputEmail.requestFocus();
 
-        }else if (password.isEmpty() || password.length()<6)
-        {
-            inputPassword.setError("Enter Password longer than 6 characters");
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
 
-        }else if (!password.equals(confirmpassword))
-        {
-            inputPassword2.setError("Password Does not match feild");
-        }else
-        {
+            Toast.makeText(RegisterActivity.this, "Please re-enter your email", Toast.LENGTH_SHORT).show();
+            inputEmail.setError("Valid email address is required");
+            inputEmail.requestFocus();
+
+        }else if (TextUtils.isEmpty(password)){
+
+            Toast.makeText(RegisterActivity.this, "Please enter your Password", Toast.LENGTH_SHORT).show();
+            inputPassword.setError("Password is required");
+            inputPassword.requestFocus();
+        } else if (!confirmpassword.matches(password)){
+            Toast.makeText(RegisterActivity.this, "Please re-enter your Password", Toast.LENGTH_SHORT).show();
+            inputPassword2.setError("Please match password");
+            inputPassword2.requestFocus();
+
+        }
+
+
+        else {
             progressDialog.setMessage("Confirming Registration...");
             progressDialog.setTitle("Please Wait");
             progressDialog.setCanceledOnTouchOutside(false);
@@ -80,8 +106,27 @@ public class RegisterActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     sendUserToNextActivity();
                     Toast.makeText(RegisterActivity.this, "Registration Succesful", Toast.LENGTH_SHORT).show();
-                }
-                {
+                }else {
+                    try {
+
+                        throw task.getException();
+
+                    } catch (FirebaseAuthWeakPasswordException e){
+
+                        inputPassword.setError("This password is too weak.");
+                        inputPassword.requestFocus();
+                    } catch (FirebaseAuthInvalidCredentialsException e) {
+                        inputEmail.setError("This email is already in use. Please try a different email");
+                        inputEmail.requestFocus();
+                    }catch (FirebaseAuthUserCollisionException e){
+
+                        inputEmail.setError("This email is already registered to an Account. Please try a different email");
+                        inputEmail.requestFocus();
+                    }catch (Exception e){
+                        Log.e(TAG, e.getMessage());
+                        Toast.makeText(RegisterActivity.this, "Login with new account", Toast.LENGTH_SHORT).show();
+                    }
+
                     progressDialog.dismiss();
                     Toast.makeText(RegisterActivity.this, ""+task.getException(), Toast.LENGTH_SHORT).show();
 
@@ -96,10 +141,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+
+
     private void sendUserToNextActivity() {
-        Intent intent=new Intent(RegisterActivity.this,HomeActivity.class);
+
+        Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+        Toast.makeText(this, "Registration Successful", Toast.LENGTH_LONG).show();
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
 }
