@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".WeeklyCalendarFragment"
     android:orientation="vertical"
-    android:background="#FFFFFF"
-    android:id="@+id/newView">
+    android:background="#FFFFFF">
 
 
 

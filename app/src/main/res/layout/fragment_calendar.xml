@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".CalendarFragment"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:id="@+id/month">
 
 
     <Button
@@ -15,12 +16,13 @@
         android:background="#FFFFFF"
         android:layout_gravity="center"
         android:contentDescription="@string/todo99"
-        android:text="WEEKLY"
+        android:text="@string/weekly"
         android:fontFamily="@font/alata"
         android:textColor="#A57632"
         android:textSize="30sp"
+        android:onClick="weekViewAction"
         tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck"
-        android:onClick="weeklyAction"/>
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

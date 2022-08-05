@@ -1,7 +1,9 @@
 package com.example.studify;
 import android.os.Bundle;
 
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ public class HomeActivity extends AppCompatActivity {
 
     //
     ActivityHomeBinding binding;
+
 
 
 
@@ -49,7 +52,17 @@ public class HomeActivity extends AppCompatActivity {
             return true;
 
 
+
+
         });
+
+
+
+
+
+
+
+
 
     }
 
@@ -60,6 +73,8 @@ public class HomeActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
+
+
 
 
 }

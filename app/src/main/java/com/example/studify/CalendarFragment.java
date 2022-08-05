@@ -11,26 +11,32 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.strictmode.CredentialProtectedWhileLockedViolation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.studify.databinding.FragmentCalendarBinding;
 
 import java.time.LocalDate;
-import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
-
-public class CalendarFragment extends Fragment implements CalendarAdapter.onItemListener{
+public class CalendarFragment extends Fragment implements CalendarAdapter.onItemListener {
     //Referencing objects from XML file activity
     public TextView monthYearText;
     public RecyclerView calendarRecyclerView;
+    public Button btn;
+
+
+
+
+
 
 
 
@@ -48,10 +54,10 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.onItem
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+
 
         //initialising objects with their ID's
         calendarRecyclerView = view.findViewById(R.id.calendarRecyclerView);
@@ -60,7 +66,6 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.onItem
 
         CalendarUtilis.selectedDate = LocalDate.now();
         setMonthView();
-
 
 
         //changing view of calendar to previous month
@@ -77,19 +82,6 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.onItem
             setMonthView();
         });
 
-        //Changing to week view in monthly calendar
-        TextView textView = view.findViewById(R.id.weeklyaction);
-        textView.setOnClickListener(v -> {
-
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            CalendarFragment calendarFragment = new CalendarFragment();
-            fragmentTransaction.replace(R.id.newView, calendarFragment);
-            fragmentTransaction.commit();
-
-
-        });
-
 
 
 
@@ -100,7 +92,11 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.onItem
 
 
 
-// Month View in a year, CalendarAdapter activity
+
+
+
+
+    // Month View in a year, CalendarAdapter activity
     private void setMonthView()
     {
         monthYearText.setText(monthYearFromDate(CalendarUtilis.selectedDate));
@@ -116,39 +112,23 @@ public class CalendarFragment extends Fragment implements CalendarAdapter.onItem
 
 
 
-    @Override
-    public void onItemClick(int position, String dayText) {
 
-    }
+//if condition statement for when user clicks on date it will send a toast message saying the date they have selected from the calendar
 
     @Override
     public void onItemClick(int position, LocalDate date) {
 
-
-    }
-
-    /**
-     *
-     * @param position
-     */
-
-    //if condition statement for when user clicks on date it will send a toast message saying the date they have selected from the calendar
-    @Override
-    public void onItemListener(int position, LocalDate date)
-    {
         if (date !=null)
         {
 
             CalendarUtilis.selectedDate = date;
             setMonthView();
         }
-    }
 
-    @Override
-    public void onResume() {
-
-        super.onResume();
 
     }
+
+
+
 
 }

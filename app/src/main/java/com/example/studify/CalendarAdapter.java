@@ -74,12 +74,11 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder> {
 
     public interface onItemListener
     {
-        void onItemClick(int position, String dayText);
+
 
         //if condition statement for when user clicks on date it will send a toast message saying the date they have selected from the calendar
         void onItemClick(int position, LocalDate date);
 
-        //if condition statement for when user clicks on date it will send a toast message saying the date they have selected from the calendar
-        void onItemListener(int position, LocalDate date);
+
     }
 }

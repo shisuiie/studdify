@@ -20,10 +20,11 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class WeeklyCalendarFragment extends Fragment implements CalendarAdapter.onItemListener{
-    //
+
     public TextView monthYearText;
     public RecyclerView calendarRecyclerView;
 
@@ -34,19 +35,23 @@ public class WeeklyCalendarFragment extends Fragment implements CalendarAdapter.
         // Inflate the layout for this fragment
         View view = inflater.inflate( R.layout.fragment_weekly_calendar, container, false);
 
-        CalendarUtilis.selectedDate = LocalDate.now();
+
         setWeekView();
+        initWidgets();
+
+
+
 
         ImageButton imageButton = view.findViewById(R.id.left_arrow);
         imageButton.setOnClickListener(v -> {
-            selectedDate = selectedDate.minusWeeks(1);
+            CalendarUtilis.selectedDate = CalendarUtilis.selectedDate.minusWeeks(1);
             setWeekView();
 
         });
 
         ImageButton imageButton1 = view.findViewById(R.id.right_arrow);
         imageButton1.setOnClickListener(v -> {
-            selectedDate = selectedDate.plusWeeks(1);
+            CalendarUtilis.selectedDate = CalendarUtilis.selectedDate.plusWeeks(1);
             setWeekView();
         });
 
@@ -58,9 +63,16 @@ public class WeeklyCalendarFragment extends Fragment implements CalendarAdapter.
         return view;
     }
 
+    private void initWidgets() {
+
+        calendarRecyclerView = requireView().findViewById(R.id.calendarRecyclerView);
+        monthYearText = requireView().findViewById(R.id.monthYearTV);
 
 
-// change arraylist from string to localDate so selected date can have a different background color and its easier to
+    }
+
+
+    // change arraylist from string to localDate so selected date can have a different background color and its easier to
 // pass that as a whole local date opposed to the dayOfMonth string
     //rename array to "arrays"
     private void setWeekView(){
@@ -79,25 +91,23 @@ public class WeeklyCalendarFragment extends Fragment implements CalendarAdapter.
 
 
 
-    @Override
-    public void onItemClick(int position, String dayText) {
-
-
-
-    }
 
     @Override
     public void onItemClick(int position, LocalDate date) {
+        CalendarUtilis.selectedDate = date;
+        setWeekView();
+
 
 
 
     }
 
+
+
     @Override
-    public void onItemListener(int position, LocalDate date) {
+    public void onResume()
+    {
 
-        CalendarUtilis.selectedDate = date;
-        setWeekView();
-
+        super.onResume();
     }
 }
